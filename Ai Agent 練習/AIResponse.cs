@@ -58,6 +58,10 @@ namespace Ai_Agent_練習
         {
             public string color_temp { get; set; }
             public int brightness { get; set; }
+            public string[] attendees { get; set; }
+            public string date_schedule { get; set; }
+            public string time_schedule { get; set; }
+            public string topic { get; set; }
         }
 
     }

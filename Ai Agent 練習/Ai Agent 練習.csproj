@@ -51,6 +51,9 @@
     <Compile Include="AIResponse.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tools\ATools.cs" />
+    <Compile Include="Tools\LightTool.cs" />
+    <Compile Include="Tools\ScheduleTool.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

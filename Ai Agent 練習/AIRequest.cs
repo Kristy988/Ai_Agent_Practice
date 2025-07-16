@@ -45,6 +45,10 @@ namespace Ai_Agent_練習
         {
             public Brightness brightness { get; set; }
             public Color_Temp color_temp { get; set; }
+            public Attendees attendees { get; set; }
+            public Date_Schedule date_Schedule { get; set; }
+            public Time_Schedule time_Schedule { get; set; }
+            public Topic topic { get; set; }
         }
 
         public class Brightness
@@ -60,5 +64,32 @@ namespace Ai_Agent_練習
             public string description { get; set; }
         }
 
+        public class Attendees
+        {
+            public string type { get; set; }
+            public ItemType items { get; set; } = new ItemType() { type = "string" };
+            public string description { get; set; }
+        }
+
+        public class ItemType
+        {
+            public string type { get; set; }
+        }
+
+        public class Date_Schedule
+        {
+            public string type { get; set; }
+            public string description { get; set; }
+        }
+        public class Time_Schedule
+        {
+            public string type { get; set; }
+            public string description { get; set; }
+        }
+        public class Topic
+        {
+            public string type { get; set; }
+            public string description { get; set; }
+        }
     }
 }
