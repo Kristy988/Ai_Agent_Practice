@@ -62,6 +62,7 @@ namespace Ai_Agent_練習
             public string date_schedule { get; set; }
             public string time_schedule { get; set; }
             public string topic { get; set; }
+            public string location { get; set; }
         }
 
     }

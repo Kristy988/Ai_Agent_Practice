@@ -3,72 +3,66 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Ai_Agent_練習.AIRequest;
 
 namespace Ai_Agent_練習
 {
     internal class AIRequest
     {
-        public List<Content> contents { get; set; }
-        public List<Tool> tools { get; set; }
+        public List<Content> contents { get; set; } = new List<Content>();
+        public List<Tool> tools { get; set; } = new List<Tool> { new Tool() };
 
         public class Content
         {
+
             public string role { get; set; }
-            public List<Part> parts { get; set; }
+            public List<Part> parts { get; set; } = new List<Part>();
+
+            public Content(string role, String partsText)
+            {
+                this.role = role;
+                parts.Add(new Part(partsText));
+            }
         }
 
         public class Part
         {
             public string text { get; set; }
+            public Part(string text)
+            {
+                this.text = text;
+            }
         }
-
+        public void AddTools(List<AFunctiondeclaration> toolName)
+        {
+            tools[0].functionDeclarations.AddRange(toolName);
+        }
         public class Tool
         {
-            public List<Functiondeclaration> functionDeclarations { get; set; }
+            public List<AFunctiondeclaration> functionDeclarations { get; set; } = new List<AFunctiondeclaration>();
         }
 
-        public class Functiondeclaration
+        public abstract class AFunctiondeclaration
         {
-            public string name { get; set; }
-            public string description { get; set; }
-            public Parameters parameters { get; set; }
+            public abstract string name { get; }
+            public abstract string description { get; }
+            public abstract AParameters parameters { get; }
+
         }
 
-        public class Parameters
+        public abstract class AParameters
         {
-            public string type { get; set; }
-            public Properties properties { get; set; }
-            public string[] required { get; set; }
+            public string type { get; set; } = "object";
+            public abstract object properties { get; }
+            public abstract string[] required { get; }
         }
 
-        public class Properties
-        {
-            public Brightness brightness { get; set; }
-            public Color_Temp color_temp { get; set; }
-            public Attendees attendees { get; set; }
-            public Date_Schedule date_Schedule { get; set; }
-            public Time_Schedule time_Schedule { get; set; }
-            public Topic topic { get; set; }
-        }
-
-        public class Brightness
-        {
-            public string type { get; set; }
-            public string description { get; set; }
-        }
-
-        public class Color_Temp
+        public class PropertyDetail
         {
             public string type { get; set; }
             public string[] @enum { get; set; }
             public string description { get; set; }
-        }
-
-        public class Attendees
-        {
-            public string type { get; set; }
-            public ItemType items { get; set; } = new ItemType() { type = "string" };
-            public string description { get; set; }
+            public ItemType items { get; set; }
         }
 
         public class ItemType
@@ -76,20 +70,5 @@ namespace Ai_Agent_練習
             public string type { get; set; }
         }
 
-        public class Date_Schedule
-        {
-            public string type { get; set; }
-            public string description { get; set; }
-        }
-        public class Time_Schedule
-        {
-            public string type { get; set; }
-            public string description { get; set; }
-        }
-        public class Topic
-        {
-            public string type { get; set; }
-            public string description { get; set; }
-        }
     }
 }
